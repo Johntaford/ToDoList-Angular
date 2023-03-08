@@ -1,0 +1,15 @@
+<div class="todo-list">
+  <h1>To-Do List</h1>
+  <p>A place to store your todos</p>
+  <ul>
+    <li *ngFor="let todo of todos">
+      <span [ngClass]="{ completed: todo.completed }">{{ todo.task }}</span>
+      <button class="complete" *ngIf="!todo.completed" (click)="completeTask(todo)">Complete</button>
+      <button (click)="removeTask(todo)">Remove</button>
+    </li>
+  </ul>
+  <form (ngSubmit)="addTask(newTask.value); newTask.value=''">
+    <input type="text" #newTask placeholder="Add a new task...">
+    <button type="submit">Submit</button>
+  </form>
+</div>
